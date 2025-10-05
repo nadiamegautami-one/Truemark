@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrueMark — Digital Ownership Proof</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ethers.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+  <!-- qrcode.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <!-- Custom script -->
+  <script src="script.js" defer></script>
+  <!-- Custom style -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col items-center p-4">
+
+  <!-- Header Logo -->
+  <h1 class="text-3xl font-bold mb-4 text-neon">TrueMark — Digital Ownership Proof</h1>
+
+  <!-- Upload File -->
+  <div class="w-full max-w-xl mb-4">
+    <label class="block mb-2 text-lg font-semibold">Upload Your Creative File</label>
+    <input type="file" id="fileInput" class="w-full p-2 rounded bg-gray-800 text-white" />
+  </div>
+
+  <!-- Display Hash -->
+  <div id="hashCard" class="w-full max-w-xl mb-4 opacity-0 transition-opacity duration-500 bg-gray-800 rounded-lg p-4 shadow-lg">
+    <h2 class="text-xl font-semibold mb-2">File SHA-256 Hash</h2>
+    <p id="fileHash" class="break-all font-mono text-green-400">Awaiting hash...</p>
+  </div>
+
+  <!-- Buttons Register / Verify -->
+  <div class="flex space-x-4 mb-4" id="actionButtons" style="display:none;">
+    <button id="registerBtn" class="px-4 py-2 bg-neonBlue rounded hover:bg-green-500 transition">Register Ownership</button>
+    <button id="verifyBtn" class="px-4 py-2 bg-neonGreen rounded hover:bg-green-500 transition">Verify Ownership</button>
+  </div>
+
+  <!-- Result Display -->
+  <div id="result" class="w-full max-w-xl mb-4 opacity-0 transition-opacity duration-500 bg-gray-800 rounded-lg p-4 shadow-lg"></div>
+
+  <!-- Certificate Generation -->
+  <div id="certificate" class="w-full max-w-xl mb-4 hidden">
+    <h2 class="text-xl font-semibold mb-2">Ownership Certificate</h2>
+    <canvas id="certCanvas" class="w-full h-auto border-2 border-green-400 rounded"></canvas>
+    <div class="mt-2 flex justify-between items-center">
+      <button id="downloadCert" class="px-4 py-2 bg-neonBlue rounded hover:bg-green-500 transition">Download Certificate</button>
+      <button id="generateQR" class="px-4 py-2 bg-neonGreen rounded hover:bg-green-500 transition">Generate QR Code</button>
+    </div>
+    <div id="qrcodeContainer" class="mt-4 flex justify-center"></div>
+  </div>
+
+</body>
+</html>
