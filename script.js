@@ -22,7 +22,7 @@ async function init() {
     contract = new ethers.Contract(contractAddress, contractABI, signer);
     console.log("Connected to Ethereum");
   } else {
-    alert("Please install MetaMask!");
+    alert("Harap Install MetaMask!");
   }
 }
 
